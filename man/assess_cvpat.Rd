@@ -42,6 +42,7 @@ and linear model prediction benchmarks.
 \examples{
 # Load libraries
 library(seminr)
+library(seminrExtras)
 
 # Create measurement model ----
 corp_rep_mm_ext <- constructs(
@@ -73,7 +74,8 @@ assess_cvpat(seminr_model = corp_rep_pls_model_ext,
              seed = 123,
              technique = predict_DA,
              noFolds = 5,
-             reps = 1)
+             reps = 1,
+             cores = 1)
 
 }
 \references{

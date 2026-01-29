@@ -9,7 +9,7 @@
 #' @param nboot The number of bootstrap subsamples to execute (defaults to 2000).
 #' @param seed The seed for reproducibility (defaults to 123).
 #' @param technique predict_EA or predict_DA (default).
-#' @param noFolds Mumber of folds for k-fold cross validation.
+#' @param noFolds Number of folds for k-fold cross validation.
 #' @param reps Number of repetitions for cross validation.
 #' @param cores Number of cores for parallelization.
 #'
@@ -27,52 +27,61 @@
 #'
 #' @examples
 #' # Load libraries
-#'library(seminr)
+#' library(seminr)
+#' library(seminrExtras)
 #'
-# # Create measurement model ----
-# corp_rep_mm_ext <- constructs(
-#  composite("QUAL", multi_items("qual_", 1:8), weights = mode_B),
-#  composite("PERF", multi_items("perf_", 1:5), weights = mode_B),
-#  composite("CSOR", multi_items("csor_", 1:5), weights = mode_B),
-#  composite("ATTR", multi_items("attr_", 1:3), weights = mode_B),
-#  composite("COMP", multi_items("comp_", 1:3)),
-#  composite("LIKE", multi_items("like_", 1:3))
-# )
-#
-# # Create structural model ----
-#
-# corp_rep_sm_ext <- relationships(
-#  paths(from = c("QUAL", "PERF", "CSOR", "ATTR"), to = c("COMP", "LIKE"))
-# )
-# alt_sm <- relationships(
-#  paths(from = c("QUAL", "PERF", "CSOR"), to = c("COMP", "LIKE"))
-# )
-#
-# # Estimate the model ----
-# established_model <- estimate_pls(
-#  data = corp_rep_data,
-#  measurement_model = corp_rep_mm_ext,
-#  structural_model  = corp_rep_sm_ext,
-#  missing = mean_replacement,
-#  missing_value = "-99")
-#
-# alternative_model <- estimate_pls(
-#  data = corp_rep_data,
-#  measurement_model = corp_rep_mm_ext,
-#  structural_model  = alt_sm,
-#  missing = mean_replacement,
-#  missing_value = "-99")
-#
-# # Function to compare the Loss of two models
-# assess_cvpat_compare(established_model,
-#                     alternative_model ,
-#                     testtype = "two.sided",
-#                     nboot = 20,
-#                     seed = 123,
-#                     technique = predict_DA,
-#                     noFolds = 5,
-#                     reps = 1,
-#                     cores = 1)
+#' # Create measurement model ----
+#' corp_rep_mm_ext <- constructs(
+#'  composite("QUAL", multi_items("qual_", 1:8), weights = mode_B),
+#'  composite("PERF", multi_items("perf_", 1:5), weights = mode_B),
+#'  composite("CSOR", multi_items("csor_", 1:5), weights = mode_B),
+#'  composite("ATTR", multi_items("attr_", 1:3), weights = mode_B),
+#'  composite("COMP", multi_items("comp_", 1:3)),
+#'  composite("LIKE", multi_items("like_", 1:3))
+#' )
+#'
+#' alt_mm <- constructs(
+#'  composite("QUAL", multi_items("qual_", 1:8), weights = mode_B),
+#'  composite("PERF", multi_items("perf_", 1:5), weights = mode_B),
+#'  composite("CSOR", multi_items("csor_", 1:5), weights = mode_B),
+#'  composite("COMP", multi_items("comp_", 1:3)),
+#'  composite("LIKE", multi_items("like_", 1:3))
+#' )
+#'
+#' # Create structural model ----
+#'
+#' corp_rep_sm_ext <- relationships(
+#'  paths(from = c("QUAL", "PERF", "CSOR", "ATTR"), to = c("COMP", "LIKE"))
+#' )
+#' alt_sm <- relationships(
+#'  paths(from = c("QUAL", "PERF", "CSOR"), to = c("COMP", "LIKE"))
+#' )
+#'
+#' # Estimate the model ----
+#' established_model <- estimate_pls(
+#'  data = corp_rep_data,
+#'  measurement_model = corp_rep_mm_ext,
+#'  structural_model  = corp_rep_sm_ext,
+#'  missing = mean_replacement,
+#'  missing_value = "-99")
+#'
+#' alternative_model <- estimate_pls(
+#'  data = corp_rep_data,
+#'  measurement_model = alt_mm,
+#'  structural_model  = alt_sm,
+#'  missing = mean_replacement,
+#'  missing_value = "-99")
+#'
+#' # Function to compare the Loss of two models
+#' assess_cvpat_compare(established_model,
+#'                     alternative_model ,
+#'                     testtype = "two.sided",
+#'                     nboot = 20,
+#'                     seed = 123,
+#'                     technique = predict_DA,
+#'                     noFolds = 5,
+#'                     reps = 1,
+#'                     cores = 1)
 #'
 #' @export
 assess_cvpat_compare <- function(established_model,
@@ -207,9 +216,9 @@ assess_cvpat_compare <- function(established_model,
   rownames(mat_out) <- rownames(mat_one)
   rownames(mat_out)[nrow(mat_one)] <- "Overall"
   mat_out <- mat_out[,c(1,2,3,6,7)]
-  comment(mat_out) <- "CVPAT as per Sharma et al. (2023).
-  Both models under comparison have identical endoogenous constructs with identical measurement models.
-  Purely exogenous constructs can be differ in regards to their relationships with both nomological
+  comment(mat_out) <- "CVPAT as per Sharma, Liengaard, Hair, Sarstedt, & Ringle, (2023).
+  Both models under comparison have identical endogenous constructs with identical measurement models.
+  Purely exogenous constructs can differ in regards to their relationships with both nomological
   partners and measurement indicators."
   colnames(mat_out) <- c("Base Model Loss", "Alt Model Loss", "Diff", "Boot T value", "Boot P Value"    )
   class(mat_out) <- append(class(mat_out), c("table_output"))
@@ -250,6 +259,7 @@ assess_cvpat_compare <- function(established_model,
 #' @examples
 #' # Load libraries
 #' library(seminr)
+#' library(seminrExtras)
 #'
 #' # Create measurement model ----
 #' corp_rep_mm_ext <- constructs(
@@ -282,7 +292,7 @@ assess_cvpat_compare <- function(established_model,
 #'              technique = predict_DA,
 #'              noFolds = 5,
 #'              reps = 1,
-#               cores = 1)
+#'              cores = 1)
 #'
 #' @export
 assess_cvpat <- function(seminr_model,

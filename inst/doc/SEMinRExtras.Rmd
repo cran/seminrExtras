@@ -1,6 +1,6 @@
 ---
 title: "seminrExtras"
-author: "S. Ray and N.P. Danks"
+author: "Nicholas .P. Danks and Soumya Ray"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 )
 library(seminr)
 library(seminrExtras)
+
+# set the theme for plotting output
+seminr_theme_set(seminr_theme_academic())
 
 # Create measurement model ----
 corp_rep_mm_ext <- constructs(
@@ -71,17 +74,37 @@ competing_model <- estimate_pls(
 
 ```
 
-SEMinR (Ray & Danks) is a domaign specific language for modeling and estimating structural equation models. 
+SEMinR (Ray, Danks, & calero-Valdez, 2026) is a domain specific language for modeling and estimating structural equation models. This is a supplementary package for SEMinR and not a standalone package. 
 This package serves to provide additional extra methods and functions that can be used to analyze PLS-SEM models. 
 
-New features implemented with this package
-CVPAT 
-- ```assess_cvpat()```
-- ```assess_cvpat_compare()```
+SEMinRExtras provides advanced SEM tools which are compatible with SEMinR. In the current version, we provide an implementation of the Cross-Validated Predictive Ability Test (CVPAT) as proposed by Liengaard et al. (2021) and Sharma et al. (2022).
+
+SEMinRExtras also serves to host the example models used in the PLS-SEM in R workbook (Hair et al., 2026).
+
+### New features implemented with this package
+
+- assess_cvpat_compare
+- assess_cvpat
+
+## The demo files for Hair et al. (2026)  
+
+In order to access the demo files for the textbook, you can run the ```demo()``` function after loading the SEMinRExtras package. 
+
+- seminr-help-debugging
+- seminr-pls-cvpat
+- seminr-primer-v2-chap2
+- seminr-primer-v2-chap3
+- seminr-primer-v2-chap4
+- seminr-primer-v2-chap5
+- seminr-primer-v2-chap6 
+- seminr-primer-v2-chap7 
+- seminr-primer-v2-chap8
+
+E.g. ```demo("seminr-pls-cvpat", package = "seminrExtras")```
 
 ## The Example model: Corporate Reputation
 
-We are applying our CV-PAT to the corporate reputation example bundled with SEMinR. 
+We are applying the CVPAT process to the corporate reputation example bundled with SEMinR. Since we will be comparing two models, we will first estimate and plot both models. Below you will find the competing and established models which will be compared. 
 
 ```{r, fig.show='hold'}
 plot(established_model)
@@ -168,6 +191,21 @@ print(assess_results$CVPAT_compare_IA,
 
 ```
 
+## First, conduct CVPAT analysis of the established model.
+
+```{r, echo=TRUE}
+# Assess the base model ----
+assess_results <- assess_cvpat(established_model,
+                               seed = 123, 
+                               cores = 1)
+print(assess_results$CVPAT_compare_LM,
+      digits = 3)
+print(assess_results$CVPAT_compare_IA,
+      digits = 3)
+```
+
+The established model has significantly lower predictive loss compared to both the naive benchmark IA and the LM model. Thus, we can say that the established model has predictive relevance.   
+
 Now we compare the results:
 
 ```{r, echo=TRUE}
@@ -187,23 +225,11 @@ print(compare_results,
       digits = 3)
 ```
 
-```{r, echo=TRUE}
-# Assess the base model ----
-assess_results <- assess_cvpat(established_model,
-                               seed = 123, 
-                               cores = 1)
-print(assess_results$CVPAT_compare_LM,
-      digits = 3)
-print(assess_results$CVPAT_compare_IA,
-      digits = 3)
-```
+The established model has significantly lower predictive loss compared to the competing model. Thus, we can say that the established model has superior predictive performance compared to the competing model.
+
 
 # References 
-- Sharma, P. N., Liengaard, B. D., Hair, J. F., Sarstedt, M., & Ringle, C. M. (2022). Predictive model assessment and selection in composite-based modeling using PLS-SEM: extensions and guidelines for using CVPAT. European journal of marketing, 57(6), 1662-1677.
+- Hair, J.F. (Jr), Hult, T.M., Ringle, C.M., Sarstedt, M., Danks, N.P., and Adler, S. (2026). Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R (Second Edition) - A Workbook. Springer.
 - Liengaard, B. D., Sharma, P. N., Hult, G. T. M., Jensen, M. B., Sarstedt, M., Hair, J. F., & Ringle, C. M. (2021). Prediction: coveted,yet forsaken? Introducing a cross‐validated predictive ability test in partial least squares path modeling. Decision Sciences, 52(2), 362-392.
- - Ray, S., Danks, N.P., Calero Valdez, A. (2024) SEMinR: Domain-specific language for building, estimating, and visualizing structural equation models in R.
- 
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+- Ray, S., Danks, N.P., Calero Valdez, A. (2026) SEMinR: Domain-specific language for building, estimating, and visualizing structural equation models in R.
+- Sharma, P. N., Liengaard, B. D., Hair, J. F., Sarstedt, M., & Ringle, C. M. (2022). Predictive model assessment and selection in composite-based modeling using PLS-SEM: extensions and guidelines for using CVPAT. European journal of marketing, 57(6), 1662-1677.

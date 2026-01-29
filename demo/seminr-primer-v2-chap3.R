@@ -1,20 +1,18 @@
-### Accompanying Code for:
-## Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R - A Workbook 2nd Ed (2026)
+#### Accompanying Code for:
+## Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R (Second Edition) - A Workbook (2026)
 ## Hair, J.F. (Jr), Hult, T.M., Ringle, C.M., Sarstedt, M., Danks, N.P., and Adler, S.
 
 ## Chapter 3: Introduction to SEMinR
 
 # Download and install the SEMinR package
-# You only need to do this once to equip RStudio on your computer with SEMinR
-# and you will have to delete the '#' and then execute the below line of code:
-# install.packages("seminr")
-# install.packages("seminrExtras")
+# You only need to do this once to equip RStudio with SEMinR and seminrExtras
+#install.packages("seminr") # remove the # to execute this line of code
+#install.packages("seminrExtras") # remove the # to execute this line of code
 
 # Make the SEMinR library ready to use
-# You must do this every time you restart RStudio and wish to use SEMinR
-# and you will have to delete the '#' and then execute the below line of code:
-# library(seminr)
-# library(seminrExtras)
+# You must do this every time you restart RStudio and wish to use packages
+library(seminr)
+library(seminrExtras)
 
 # Load the corporate reputation data
 corp_rep_data <- corp_rep_data
@@ -43,7 +41,7 @@ corp_rep_simple_model <- estimate_pls(data = corp_rep_data,
   missing_value = "-99")
 
 # Estimate the model with default settings
-corp_rep_simple_model <- estimate_pls(data = corp_rep_data,
+corp_rep_simple <- estimate_pls(data = corp_rep_data,
   measurement_model = simple_mm,
   structural_model  = simple_sm)
 
@@ -53,8 +51,8 @@ corp_rep_simple_model <- estimate_pls(data = corp_rep_data,
 error_mm <- constructs(
   composite("COP", multi_items("comp_", 1:3)),
   composite("LIKE", multi_items("like_", 1:3)),
-  composite("CUSA", single_item("cusa")),
-  composite("CUSL", multi_items("cusl_", 1:3)))
+  composite("CUSL", multi_items("cusl_", 1:3)),
+  composite("CUSA", single_item("cusa")))
 
 # Specify the structural model.
 simple_sm <- relationships(
@@ -63,17 +61,17 @@ simple_sm <- relationships(
 
 # Note that I have specified the argument `assess_syntax` as TRUE
 # Now estimating the model should output an error
-estimate_pls(data = corp_rep,
+estimate_pls(data = corp_rep_data,
              measurement_model = error_mm,
              structural_model = simple_sm,
              assess_syntax = TRUE)
 
 ## Plotting a model for debugging
 # Plot the measurement model
-plot(error_mm)
+plot(error_mm, theme = seminr_theme_academic())
 
 # Plot the structural model
-plot(simple_sm)
+plot(simple_sm, theme = seminr_theme_academic())
 
 # Summarize the model results
 summary_simple_corp_rep <- summary(corp_rep_simple_model)
@@ -85,7 +83,8 @@ summary_simple_corp_rep$paths
 summary_simple_corp_rep$reliability
 
 # Bootstrap the model
-boot_simple_corp_rep <- bootstrap_model(seminr_model = corp_rep_simple_model,
+boot_simple_corp_rep <- bootstrap_model(
+  seminr_model = corp_rep_simple_model,
   nboot = 1000,
   cores = NULL,
   seed = 123)

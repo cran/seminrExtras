@@ -6,6 +6,9 @@ knitr::opts_chunk$set(
 library(seminr)
 library(seminrExtras)
 
+# set the theme for plotting output
+seminr_theme_set(seminr_theme_academic())
+
 # Create measurement model ----
 corp_rep_mm_ext <- constructs(
   composite("QUAL", multi_items("qual_", 1:8), weights = mode_B),
@@ -142,6 +145,16 @@ plot(competing_model)
 # 
 
 ## ----echo=TRUE----------------------------------------------------------------
+# Assess the base model ----
+assess_results <- assess_cvpat(established_model,
+                               seed = 123, 
+                               cores = 1)
+print(assess_results$CVPAT_compare_LM,
+      digits = 3)
+print(assess_results$CVPAT_compare_IA,
+      digits = 3)
+
+## ----echo=TRUE----------------------------------------------------------------
 # Function to compare the Loss of two models
 compare_results <- assess_cvpat_compare(established_model = established_model,
                                         alternative_model = competing_model,
@@ -155,15 +168,5 @@ compare_results <- assess_cvpat_compare(established_model = established_model,
 
 print(compare_results, 
       cores = 1,
-      digits = 3)
-
-## ----echo=TRUE----------------------------------------------------------------
-# Assess the base model ----
-assess_results <- assess_cvpat(established_model,
-                               seed = 123, 
-                               cores = 1)
-print(assess_results$CVPAT_compare_LM,
-      digits = 3)
-print(assess_results$CVPAT_compare_IA,
       digits = 3)
 
