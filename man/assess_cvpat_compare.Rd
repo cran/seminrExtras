@@ -2,7 +2,7 @@
 % Please edit documentation in R/feature_cvpat.R
 \name{assess_cvpat_compare}
 \alias{assess_cvpat_compare}
-\title{SEMinR function to compare CVPAT loss of two models}
+\title{Compare CVPAT loss between two PLS models}
 \usage{
 assess_cvpat_compare(
   established_model,
@@ -40,7 +40,8 @@ A matrix of the estimated loss and results of significance testing.
 }
 \description{
 `assess_cvpat_compare` conducts a CVPAT significance test of loss between
-two models.
+two models. Use this to determine which of two competing models has
+superior predictive performance.
 }
 \examples{
 # Load libraries
@@ -103,7 +104,7 @@ assess_cvpat_compare(established_model,
 }
 \references{
 Sharma, P. N., Liengaard, B. D., Hair, J. F., Sarstedt, M., &
-Ringle, C. M. (2022). Predictive model assessment and selection in
+Ringle, C. M. (2023). Predictive model assessment and selection in
 composite-based modeling using PLS-SEM: extensions and guidelines for
 using CVPAT. European journal of marketing, 57(6), 1662-1677.
 
@@ -111,4 +112,7 @@ Liengaard, B. D., Sharma, P. N., Hult, G. T. M., Jensen, M. B.,
 Sarstedt, M., Hair, J. F., & Ringle, C. M. (2021). Prediction: coveted,
 yet forsaken? Introducing a cross‐validated predictive ability test in
 partial least squares path modeling. Decision Sciences, 52(2), 362-392.
+}
+\seealso{
+[assess_cvpat()] for single model assessment against benchmarks
 }

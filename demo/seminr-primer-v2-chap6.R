@@ -137,10 +137,10 @@ sum_model3 <- summary(pls_model3)
 # Inspect the IT Criteria matrix of Model1
 sum_model1$it_criteria
 
-# Subset the matrix to only return the BIC row and CUSL column
+# Subset the matrix to only return the BIC row and CUSA column
 sum_model1$it_criteria["BIC", "CUSA"]
 
-# Collect the vector of BIC values for CUSL
+# Collect the vector of BIC values for CUSA
 itcriteria_vector <- c(sum_model1$it_criteria["BIC","CUSA"],
                        sum_model2$it_criteria["BIC","CUSA"],
                        sum_model3$it_criteria["BIC","CUSA"])
@@ -171,3 +171,13 @@ compare_results <- assess_cvpat_compare(established_model = established_model,
 
 print(compare_results,
       digits = 3)
+
+# Calculate overfit ratio ----
+predict_established <- summary(predict_pls(model = established_model))
+predict_alternative <- summary(predict_pls(model = alternative_model))
+
+# Overfit ratio for established model
+predict_established$construct_error
+
+# Overfit ratio for alternative model
+predict_alternative$construct_error

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Nicholas .P. Danks and Soumya Ray" />
 
-<meta name="date" content="2026-01-29" />
+<meta name="date" content="2026-04-29" />
 
 <title>seminrExtras</title>
 
@@ -1284,8 +1284,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1296,7 +1297,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1574,27 +1575,120 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">seminrExtras</h1>
 <h4 class="author">Nicholas .P. Danks and Soumya Ray</h4>
-<h4 class="date">2026-01-29</h4>
+<h4 class="date">2026-04-29</h4>
 
 
 
-<p>SEMinR (Ray, Danks, &amp; calero-Valdez, 2026) is a domain specific
+<p>SEMinR (Ray, Danks, &amp; Calero Valdez, 2026) is a domain specific
 language for modeling and estimating structural equation models. This is
 a supplementary package for SEMinR and not a standalone package. This
 package serves to provide additional extra methods and functions that
 can be used to analyze PLS-SEM models.</p>
 <p>SEMinRExtras provides advanced SEM tools which are compatible with
-SEMinR. In the current version, we provide an implementation of the
-Cross-Validated Predictive Ability Test (CVPAT) as proposed by Liengaard
-et al. (2021) and Sharma et al. (2022).</p>
+SEMinR. It implements several methods for evaluating PLS-SEM models,
+including CVPAT (Liengaard et al., 2021; Sharma et al., 2022), Combined
+Importance-Performance Map Analysis (cIPMA; Sarstedt et al., 2024; Hauff
+et al., 2024), Composite Overfit Analysis (COA), Necessary Condition
+Analysis (NCA; Dul, 2016; Richter et al., 2020), NCA-ESSE (Becker et
+al., 2026), Confirmatory Tetrad Analysis (CTA-PLS; Gudergan et al.,
+2008), FIMIX-PLS (Hahn et al., 2002; Sarstedt et al., 2011), PLS-POS
+(Becker et al., 2013), and congruence testing (Franke, Sarstedt, &amp;
+Danks, 2021).</p>
 <p>SEMinRExtras also serves to host the example models used in the
 PLS-SEM in R workbook (Hair et al., 2026).</p>
-<div id="new-features-implemented-with-this-package" class="section level3">
-<h3>New features implemented with this package</h3>
-<ul>
-<li>assess_cvpat_compare</li>
-<li>assess_cvpat</li>
-</ul>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>assess_cvpat()</code></td>
+<td>CVPAT against LM and IA benchmarks</td>
+</tr>
+<tr class="even">
+<td><code>assess_cvpat_compare()</code></td>
+<td>Compare predictive loss of two PLS models</td>
+</tr>
+<tr class="odd">
+<td><code>assess_ipma()</code></td>
+<td>Importance-Performance Map Analysis (IPMA)</td>
+</tr>
+<tr class="even">
+<td><code>assess_cipma()</code></td>
+<td>Combined IPMA with Necessary Condition Analysis (cIPMA)</td>
+</tr>
+<tr class="odd">
+<td><code>assess_coa()</code></td>
+<td>Composite Overfit Analysis (full pipeline)</td>
+</tr>
+<tr class="even">
+<td><code>predictive_deviance()</code></td>
+<td>Compute predictive deviance scores</td>
+</tr>
+<tr class="odd">
+<td><code>deviance_tree()</code></td>
+<td>Identify deviant case groups via decision tree</td>
+</tr>
+<tr class="even">
+<td><code>unstable_params()</code></td>
+<td>Parameter instability analysis</td>
+</tr>
+<tr class="odd">
+<td><code>group_rules()</code></td>
+<td>Extract decision rules for deviant groups</td>
+</tr>
+<tr class="even">
+<td><code>competes()</code></td>
+<td>Show competing splits at tree nodes</td>
+</tr>
+<tr class="odd">
+<td><code>assess_nca()</code></td>
+<td>Necessary Condition Analysis for PLS-SEM</td>
+</tr>
+<tr class="even">
+<td><code>assess_nca_esse()</code></td>
+<td>NCA with Effect Size Sensitivity Extension</td>
+</tr>
+<tr class="odd">
+<td><code>assess_cta()</code></td>
+<td>Confirmatory Tetrad Analysis (CTA-PLS) with indicator borrowing
+(Gudergan et al., 2008)</td>
+</tr>
+<tr class="even">
+<td><code>assess_fimix()</code></td>
+<td>FIMIX-PLS latent class segmentation</td>
+</tr>
+<tr class="odd">
+<td><code>assess_fimix_compare()</code></td>
+<td>Compare FIMIX solutions across K values</td>
+</tr>
+<tr class="even">
+<td><code>assess_pos()</code></td>
+<td>PLS-POS prediction-oriented segmentation (Becker et al., 2013)</td>
+</tr>
+<tr class="odd">
+<td><code>assess_pos_compare()</code></td>
+<td>Compare PLS-POS solutions across K values</td>
+</tr>
+<tr class="even">
+<td><code>pos_segments()</code></td>
+<td>Extract segment-specific re-estimated PLS models</td>
+</tr>
+<tr class="odd">
+<td><code>congruence_test()</code></td>
+<td>Bootstrapped congruence coefficient testing</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="the-demo-files-for-hair-et-al.-2026" class="section level2">
 <h2>The demo files for Hair et al. (2026)</h2>
@@ -1603,6 +1697,13 @@ PLS-SEM in R workbook (Hair et al., 2026).</p>
 <ul>
 <li>seminr-help-debugging</li>
 <li>seminr-pls-cvpat</li>
+<li>seminr-pls-cipma</li>
+<li>seminr-pls-coa</li>
+<li>seminr-pls-nca</li>
+<li>seminr-pls-fimix</li>
+<li>seminr-pls-cta</li>
+<li>seminr-pls-pos</li>
+<li>seminr-pls-congruence</li>
 <li>seminr-primer-v2-chap2</li>
 <li>seminr-primer-v2-chap3</li>
 <li>seminr-primer-v2-chap4</li>
@@ -1621,11 +1722,11 @@ bundled with SEMinR. Since we will be comparing two models, we will
 first estimate and plot both models. Below you will find the competing
 and established models which will be compared.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">plot</span>(established_model)</span></code></pre></div>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-55147a93a1416f328632" style="width:288px;height:288px;"></div>
-<script type="application/json" data-for="htmlwidget-55147a93a1416f328632">{"x":{"diagram":"digraph G {\n\n// ----------------------\n// General graph settings\n// ----------------------\ngraph [\ncharset = \"UTF-8\",\nlayout = dot,\nlabel = \"\",\nfontsize = 24,\nfontcolor = black,\nfontname = helvetica,\nrankdir = LR,\nlabelloc = t,\nsplines = TRUE\nbgcolor = transparent\n]\n\n// --------------------\n// The structural model\n// --------------------\nsubgraph sm {\nrankdir = LR;\nnode [\nshape = ellipse,\ncolor = black,\nfillcolor = white,\nstyle = filled,\nfontsize = 12,\nfontcolor = black,\nheight = 1.03860677083333,\nwidth = 0.9,\nfontname = helvetica,\nfixedsize = true\n]\n\"QUAL\" [label=<<B>QUAL <\/B>>, shape = ellipse]\n\"PERF\" [label=<<B>PERF <\/B>>, shape = ellipse]\n\"CSOR\" [label=<<B>CSOR <\/B>>, shape = ellipse]\n\"ATTR\" [label=<<B>ATTR <\/B>>, shape = ellipse]\n\"COMP\" [label=<<B>COMP <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.631<\/FONT>>, shape = ellipse]\n\"LIKE\" [label=<<B>LIKE <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.558<\/FONT>>, shape = ellipse]\n\"CUSA\" [label=<<B>CUSA <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.292<\/FONT>>, shape = ellipse]\n\"CUSL\" [label=<<B>CUSL <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.562<\/FONT>>, shape = ellipse]\nedge [\ncolor = black,\nfontsize = 9,\nfontcolor = black,\nfontname = helvetica,\ndir = both,\narrowhead = normal,\narrowtail = none\n]\n\"QUAL\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.43<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.65, style = solid, color = black]\n\"PERF\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.295<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.975, style = solid, color = black]\n\"CSOR\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.059<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.795, style = solid, color = black]\n\"ATTR\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.086<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.93, style = solid, color = black]\n\"QUAL\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.38<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.4, style = solid, color = black]\n\"PERF\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.117<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.085, style = solid, color = black]\n\"CSOR\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.178<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.39, style = solid, color = black]\n\"ATTR\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.167<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.335, style = solid, color = black]\n\"COMP\" -> {\"CUSA\"}[weight = 1, label = < 𝛽 = 0.146<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.23, style = solid, color = black]\n\"LIKE\" -> {\"CUSA\"}[weight = 1, label = < 𝛽 = 0.436<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.68, style = solid, color = black]\n\"COMP\" -> {\"CUSL\"}[weight = 1, label = < 𝛽 = 0.006<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.53, style = solid, color = black]\n\"LIKE\" -> {\"CUSL\"}[weight = 1, label = < 𝛽 = 0.344<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.22, style = solid, color = black]\n\"CUSA\" -> {\"CUSL\"}[weight = 1, label = < 𝛽 = 0.505<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 3.025, style = solid, color = black]\n}\n// ---------------------\n// The measurement model\n// ---------------------\n\nsubgraph construct_1 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"qual_1\" [label = \"qual_1\", shape = box]\n\"qual_2\" [label = \"qual_2\", shape = box]\n\"qual_3\" [label = \"qual_3\", shape = box]\n\"qual_4\" [label = \"qual_4\", shape = box]\n\"qual_5\" [label = \"qual_5\", shape = box]\n\"qual_6\" [label = \"qual_6\", shape = box]\n\"qual_7\" [label = \"qual_7\", shape = box]\n\"qual_8\" [label = \"qual_8\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"qual_1\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.202 >, penwidth = 1.106, style = solid, color = dimgrey]\n\"qual_2\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.041 >, penwidth = 0.623, style = solid, color = dimgrey]\n\"qual_3\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.106 >, penwidth = 0.818, style = solid, color = dimgrey]\n\"qual_4\" -> {\"QUAL\"}[weight = 1000, label = < w = -0.005 >, penwidth = 0.515, style = dashed, color = dimgrey]\n\"qual_5\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.16 >, penwidth = 0.98, style = solid, color = dimgrey]\n\"qual_6\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.398 >, penwidth = 1.694, style = solid, color = dimgrey]\n\"qual_7\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.229 >, penwidth = 1.187, style = solid, color = dimgrey]\n\"qual_8\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.19 >, penwidth = 1.07, style = solid, color = dimgrey]\n\n}\nsubgraph construct_2 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"perf_1\" [label = \"perf_1\", shape = box]\n\"perf_2\" [label = \"perf_2\", shape = box]\n\"perf_3\" [label = \"perf_3\", shape = box]\n\"perf_4\" [label = \"perf_4\", shape = box]\n\"perf_5\" [label = \"perf_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"perf_1\" -> {\"PERF\"}[weight = 1000, label = < w = 0.468 >, penwidth = 1.904, style = solid, color = dimgrey]\n\"perf_2\" -> {\"PERF\"}[weight = 1000, label = < w = 0.177 >, penwidth = 1.031, style = solid, color = dimgrey]\n\"perf_3\" -> {\"PERF\"}[weight = 1000, label = < w = 0.194 >, penwidth = 1.082, style = solid, color = dimgrey]\n\"perf_4\" -> {\"PERF\"}[weight = 1000, label = < w = 0.34 >, penwidth = 1.52, style = solid, color = dimgrey]\n\"perf_5\" -> {\"PERF\"}[weight = 1000, label = < w = 0.199 >, penwidth = 1.097, style = solid, color = dimgrey]\n\n}\nsubgraph construct_3 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"csor_1\" [label = \"csor_1\", shape = box]\n\"csor_2\" [label = \"csor_2\", shape = box]\n\"csor_3\" [label = \"csor_3\", shape = box]\n\"csor_4\" [label = \"csor_4\", shape = box]\n\"csor_5\" [label = \"csor_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"csor_1\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.306 >, penwidth = 1.418, style = solid, color = dimgrey]\n\"csor_2\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.037 >, penwidth = 0.611, style = solid, color = dimgrey]\n\"csor_3\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.406 >, penwidth = 1.718, style = solid, color = dimgrey]\n\"csor_4\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.08 >, penwidth = 0.74, style = solid, color = dimgrey]\n\"csor_5\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.416 >, penwidth = 1.748, style = solid, color = dimgrey]\n\n}\nsubgraph construct_4 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"attr_1\" [label = \"attr_1\", shape = box]\n\"attr_2\" [label = \"attr_2\", shape = box]\n\"attr_3\" [label = \"attr_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"attr_1\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.414 >, penwidth = 1.742, style = solid, color = dimgrey]\n\"attr_2\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.201 >, penwidth = 1.103, style = solid, color = dimgrey]\n\"attr_3\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.658 >, penwidth = 2.474, style = solid, color = dimgrey]\n\n}\nsubgraph construct_5 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"comp_1\" [label = \"comp_1\", shape = box]\n\"comp_2\" [label = \"comp_2\", shape = box]\n\"comp_3\" [label = \"comp_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"comp_1\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.824 >, penwidth = 2.972, style = solid, color = dimgrey]\n\"comp_2\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.821 >, penwidth = 2.963, style = solid, color = dimgrey]\n\"comp_3\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_6 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"like_1\" [label = \"like_1\", shape = box]\n\"like_2\" [label = \"like_2\", shape = box]\n\"like_3\" [label = \"like_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"like_1\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.88 >, penwidth = 3.14, style = solid, color = dimgrey]\n\"like_2\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.869 >, penwidth = 3.107, style = solid, color = dimgrey]\n\"like_3\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_7 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusa\" [label = \"cusa\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"cusa\" -> {\"CUSA\"}[weight = 1000, label = < 𝜆 = 1 >, penwidth = 3.5, style = solid, color = dimgrey]\n\n}\nsubgraph construct_8 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusl_1\" [label = \"cusl_1\", shape = box]\n\"cusl_2\" [label = \"cusl_2\", shape = box]\n\"cusl_3\" [label = \"cusl_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"CUSL\" -> {\"cusl_1\"}[weight = 1000, label = < 𝜆 = 0.833 >, penwidth = 2.999, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_2\"}[weight = 1000, label = < 𝜆 = 0.917 >, penwidth = 3.251, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_3\"}[weight = 1000, label = < 𝜆 = 0.843 >, penwidth = 3.029, style = solid, color = dimgrey]\n\n}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-308076a95c76348fe96d" style="width:288px;height:288px;"></div>
+<script type="application/json" data-for="htmlwidget-308076a95c76348fe96d">{"x":{"diagram":"digraph G {\n\n// ----------------------\n// General graph settings\n// ----------------------\ngraph [\ncharset = \"UTF-8\",\nlayout = dot,\nlabel = \"\",\nfontsize = 24,\nfontcolor = black,\nfontname = helvetica,\nrankdir = LR,\nlabelloc = t,\nsplines = TRUE\nbgcolor = transparent\n]\n\n// --------------------\n// The structural model\n// --------------------\nsubgraph sm {\nrankdir = LR;\nnode [\nshape = ellipse,\ncolor = black,\nfillcolor = white,\nstyle = filled,\nfontsize = 12,\nfontcolor = black,\nheight = 1.03860677083333,\nwidth = 0.9,\nfontname = helvetica,\nfixedsize = true\n]\n\"QUAL\" [label=<<B>QUAL <\/B>>, shape = ellipse]\n\"PERF\" [label=<<B>PERF <\/B>>, shape = ellipse]\n\"CSOR\" [label=<<B>CSOR <\/B>>, shape = ellipse]\n\"ATTR\" [label=<<B>ATTR <\/B>>, shape = ellipse]\n\"COMP\" [label=<<B>COMP <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.631<\/FONT>>, shape = ellipse]\n\"LIKE\" [label=<<B>LIKE <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.558<\/FONT>>, shape = ellipse]\n\"CUSA\" [label=<<B>CUSA <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.292<\/FONT>>, shape = ellipse]\n\"CUSL\" [label=<<B>CUSL <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.562<\/FONT>>, shape = ellipse]\nedge [\ncolor = black,\nfontsize = 9,\nfontcolor = black,\nfontname = helvetica,\ndir = both,\narrowhead = normal,\narrowtail = none\n]\n\"QUAL\" -> {\"COMP\"}[weight = 1, label = < β = 0.43<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.65, style = solid, color = black]\n\"PERF\" -> {\"COMP\"}[weight = 1, label = < β = 0.295<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.975, style = solid, color = black]\n\"CSOR\" -> {\"COMP\"}[weight = 1, label = < β = 0.059<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.795, style = solid, color = black]\n\"ATTR\" -> {\"COMP\"}[weight = 1, label = < β = 0.086<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.93, style = solid, color = black]\n\"QUAL\" -> {\"LIKE\"}[weight = 1, label = < β = 0.38<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.4, style = solid, color = black]\n\"PERF\" -> {\"LIKE\"}[weight = 1, label = < β = 0.117<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.085, style = solid, color = black]\n\"CSOR\" -> {\"LIKE\"}[weight = 1, label = < β = 0.178<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.39, style = solid, color = black]\n\"ATTR\" -> {\"LIKE\"}[weight = 1, label = < β = 0.167<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.335, style = solid, color = black]\n\"COMP\" -> {\"CUSA\"}[weight = 1, label = < β = 0.146<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.23, style = solid, color = black]\n\"LIKE\" -> {\"CUSA\"}[weight = 1, label = < β = 0.436<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.68, style = solid, color = black]\n\"COMP\" -> {\"CUSL\"}[weight = 1, label = < β = 0.006<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.53, style = solid, color = black]\n\"LIKE\" -> {\"CUSL\"}[weight = 1, label = < β = 0.344<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.22, style = solid, color = black]\n\"CUSA\" -> {\"CUSL\"}[weight = 1, label = < β = 0.505<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 3.025, style = solid, color = black]\n}\n// ---------------------\n// The measurement model\n// ---------------------\n\nsubgraph construct_1 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"qual_1\" [label = \"qual_1\", shape = box]\n\"qual_2\" [label = \"qual_2\", shape = box]\n\"qual_3\" [label = \"qual_3\", shape = box]\n\"qual_4\" [label = \"qual_4\", shape = box]\n\"qual_5\" [label = \"qual_5\", shape = box]\n\"qual_6\" [label = \"qual_6\", shape = box]\n\"qual_7\" [label = \"qual_7\", shape = box]\n\"qual_8\" [label = \"qual_8\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"qual_1\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.202 >, penwidth = 1.106, style = solid, color = dimgrey]\n\"qual_2\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.041 >, penwidth = 0.623, style = solid, color = dimgrey]\n\"qual_3\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.106 >, penwidth = 0.818, style = solid, color = dimgrey]\n\"qual_4\" -> {\"QUAL\"}[weight = 1000, label = < w = -0.005 >, penwidth = 0.515, style = dashed, color = dimgrey]\n\"qual_5\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.16 >, penwidth = 0.98, style = solid, color = dimgrey]\n\"qual_6\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.398 >, penwidth = 1.694, style = solid, color = dimgrey]\n\"qual_7\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.229 >, penwidth = 1.187, style = solid, color = dimgrey]\n\"qual_8\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.19 >, penwidth = 1.07, style = solid, color = dimgrey]\n\n}\nsubgraph construct_2 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"perf_1\" [label = \"perf_1\", shape = box]\n\"perf_2\" [label = \"perf_2\", shape = box]\n\"perf_3\" [label = \"perf_3\", shape = box]\n\"perf_4\" [label = \"perf_4\", shape = box]\n\"perf_5\" [label = \"perf_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"perf_1\" -> {\"PERF\"}[weight = 1000, label = < w = 0.468 >, penwidth = 1.904, style = solid, color = dimgrey]\n\"perf_2\" -> {\"PERF\"}[weight = 1000, label = < w = 0.177 >, penwidth = 1.031, style = solid, color = dimgrey]\n\"perf_3\" -> {\"PERF\"}[weight = 1000, label = < w = 0.194 >, penwidth = 1.082, style = solid, color = dimgrey]\n\"perf_4\" -> {\"PERF\"}[weight = 1000, label = < w = 0.34 >, penwidth = 1.52, style = solid, color = dimgrey]\n\"perf_5\" -> {\"PERF\"}[weight = 1000, label = < w = 0.199 >, penwidth = 1.097, style = solid, color = dimgrey]\n\n}\nsubgraph construct_3 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"csor_1\" [label = \"csor_1\", shape = box]\n\"csor_2\" [label = \"csor_2\", shape = box]\n\"csor_3\" [label = \"csor_3\", shape = box]\n\"csor_4\" [label = \"csor_4\", shape = box]\n\"csor_5\" [label = \"csor_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"csor_1\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.306 >, penwidth = 1.418, style = solid, color = dimgrey]\n\"csor_2\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.037 >, penwidth = 0.611, style = solid, color = dimgrey]\n\"csor_3\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.406 >, penwidth = 1.718, style = solid, color = dimgrey]\n\"csor_4\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.08 >, penwidth = 0.74, style = solid, color = dimgrey]\n\"csor_5\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.416 >, penwidth = 1.748, style = solid, color = dimgrey]\n\n}\nsubgraph construct_4 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"attr_1\" [label = \"attr_1\", shape = box]\n\"attr_2\" [label = \"attr_2\", shape = box]\n\"attr_3\" [label = \"attr_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"attr_1\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.414 >, penwidth = 1.742, style = solid, color = dimgrey]\n\"attr_2\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.201 >, penwidth = 1.103, style = solid, color = dimgrey]\n\"attr_3\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.658 >, penwidth = 2.474, style = solid, color = dimgrey]\n\n}\nsubgraph construct_5 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"comp_1\" [label = \"comp_1\", shape = box]\n\"comp_2\" [label = \"comp_2\", shape = box]\n\"comp_3\" [label = \"comp_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"comp_1\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.824 >, penwidth = 2.972, style = solid, color = dimgrey]\n\"comp_2\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.821 >, penwidth = 2.963, style = solid, color = dimgrey]\n\"comp_3\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_6 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"like_1\" [label = \"like_1\", shape = box]\n\"like_2\" [label = \"like_2\", shape = box]\n\"like_3\" [label = \"like_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"like_1\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.88 >, penwidth = 3.14, style = solid, color = dimgrey]\n\"like_2\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.869 >, penwidth = 3.107, style = solid, color = dimgrey]\n\"like_3\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_7 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusa\" [label = \"cusa\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"cusa\" -> {\"CUSA\"}[weight = 1000, label = < λ = 1 >, penwidth = 3.5, style = solid, color = dimgrey]\n\n}\nsubgraph construct_8 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusl_1\" [label = \"cusl_1\", shape = box]\n\"cusl_2\" [label = \"cusl_2\", shape = box]\n\"cusl_3\" [label = \"cusl_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"CUSL\" -> {\"cusl_1\"}[weight = 1000, label = < λ = 0.833 >, penwidth = 2.999, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_2\"}[weight = 1000, label = < λ = 0.917 >, penwidth = 3.251, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_3\"}[weight = 1000, label = < λ = 0.843 >, penwidth = 3.029, style = solid, color = dimgrey]\n\n}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(competing_model)</span></code></pre></div>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-73f2c460545f01a59daa" style="width:288px;height:288px;"></div>
-<script type="application/json" data-for="htmlwidget-73f2c460545f01a59daa">{"x":{"diagram":"digraph G {\n\n// ----------------------\n// General graph settings\n// ----------------------\ngraph [\ncharset = \"UTF-8\",\nlayout = dot,\nlabel = \"\",\nfontsize = 24,\nfontcolor = black,\nfontname = helvetica,\nrankdir = LR,\nlabelloc = t,\nsplines = TRUE\nbgcolor = transparent\n]\n\n// --------------------\n// The structural model\n// --------------------\nsubgraph sm {\nrankdir = LR;\nnode [\nshape = ellipse,\ncolor = black,\nfillcolor = white,\nstyle = filled,\nfontsize = 12,\nfontcolor = black,\nheight = 1.03860677083333,\nwidth = 0.9,\nfontname = helvetica,\nfixedsize = true\n]\n\"QUAL\" [label=<<B>QUAL <\/B>>, shape = ellipse]\n\"PERF\" [label=<<B>PERF <\/B>>, shape = ellipse]\n\"CSOR\" [label=<<B>CSOR <\/B>>, shape = ellipse]\n\"ATTR\" [label=<<B>ATTR <\/B>>, shape = ellipse]\n\"COMP\" [label=<<B>COMP <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.629<\/FONT>>, shape = ellipse]\n\"LIKE\" [label=<<B>LIKE <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.558<\/FONT>>, shape = ellipse]\n\"CUSA\" [label=<<B>CUSA <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.292<\/FONT>>, shape = ellipse]\n\"CUSL\" [label=<<B>CUSL <\/B><BR /><FONT POINT-SIZE=\"10\">r² = 0.476<\/FONT>>, shape = ellipse]\nedge [\ncolor = black,\nfontsize = 9,\nfontcolor = black,\nfontname = helvetica,\ndir = both,\narrowhead = normal,\narrowtail = none\n]\n\"QUAL\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.427<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.635, style = solid, color = black]\n\"PERF\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.3<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2, style = solid, color = black]\n\"CSOR\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.055<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.775, style = solid, color = black]\n\"ATTR\" -> {\"COMP\"}[weight = 1, label = < 𝛽 = 0.086<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.93, style = solid, color = black]\n\"QUAL\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.38<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.4, style = solid, color = black]\n\"PERF\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.117<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.085, style = solid, color = black]\n\"CSOR\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.179<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.395, style = solid, color = black]\n\"ATTR\" -> {\"LIKE\"}[weight = 1, label = < 𝛽 = 0.167<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.335, style = solid, color = black]\n\"COMP\" -> {\"CUSA\"}[weight = 1, label = < 𝛽 = 0.141<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.205, style = solid, color = black]\n\"LIKE\" -> {\"CUSA\"}[weight = 1, label = < 𝛽 = 0.439<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.695, style = solid, color = black]\n\"CUSA\" -> {\"CUSL\"}[weight = 1, label = < 𝛽 = 0.69<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 3.95, style = solid, color = black]\n}\n// ---------------------\n// The measurement model\n// ---------------------\n\nsubgraph construct_1 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"qual_1\" [label = \"qual_1\", shape = box]\n\"qual_2\" [label = \"qual_2\", shape = box]\n\"qual_3\" [label = \"qual_3\", shape = box]\n\"qual_4\" [label = \"qual_4\", shape = box]\n\"qual_5\" [label = \"qual_5\", shape = box]\n\"qual_6\" [label = \"qual_6\", shape = box]\n\"qual_7\" [label = \"qual_7\", shape = box]\n\"qual_8\" [label = \"qual_8\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"qual_1\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.204 >, penwidth = 1.112, style = solid, color = dimgrey]\n\"qual_2\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.04 >, penwidth = 0.62, style = solid, color = dimgrey]\n\"qual_3\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.104 >, penwidth = 0.812, style = solid, color = dimgrey]\n\"qual_4\" -> {\"QUAL\"}[weight = 1000, label = < w = -0.005 >, penwidth = 0.515, style = dashed, color = dimgrey]\n\"qual_5\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.16 >, penwidth = 0.98, style = solid, color = dimgrey]\n\"qual_6\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.398 >, penwidth = 1.694, style = solid, color = dimgrey]\n\"qual_7\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.229 >, penwidth = 1.187, style = solid, color = dimgrey]\n\"qual_8\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.191 >, penwidth = 1.073, style = solid, color = dimgrey]\n\n}\nsubgraph construct_2 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"perf_1\" [label = \"perf_1\", shape = box]\n\"perf_2\" [label = \"perf_2\", shape = box]\n\"perf_3\" [label = \"perf_3\", shape = box]\n\"perf_4\" [label = \"perf_4\", shape = box]\n\"perf_5\" [label = \"perf_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"perf_1\" -> {\"PERF\"}[weight = 1000, label = < w = 0.466 >, penwidth = 1.898, style = solid, color = dimgrey]\n\"perf_2\" -> {\"PERF\"}[weight = 1000, label = < w = 0.178 >, penwidth = 1.034, style = solid, color = dimgrey]\n\"perf_3\" -> {\"PERF\"}[weight = 1000, label = < w = 0.196 >, penwidth = 1.088, style = solid, color = dimgrey]\n\"perf_4\" -> {\"PERF\"}[weight = 1000, label = < w = 0.341 >, penwidth = 1.523, style = solid, color = dimgrey]\n\"perf_5\" -> {\"PERF\"}[weight = 1000, label = < w = 0.199 >, penwidth = 1.097, style = solid, color = dimgrey]\n\n}\nsubgraph construct_3 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"csor_1\" [label = \"csor_1\", shape = box]\n\"csor_2\" [label = \"csor_2\", shape = box]\n\"csor_3\" [label = \"csor_3\", shape = box]\n\"csor_4\" [label = \"csor_4\", shape = box]\n\"csor_5\" [label = \"csor_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"csor_1\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.308 >, penwidth = 1.424, style = solid, color = dimgrey]\n\"csor_2\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.038 >, penwidth = 0.614, style = solid, color = dimgrey]\n\"csor_3\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.405 >, penwidth = 1.715, style = solid, color = dimgrey]\n\"csor_4\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.081 >, penwidth = 0.743, style = solid, color = dimgrey]\n\"csor_5\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.415 >, penwidth = 1.745, style = solid, color = dimgrey]\n\n}\nsubgraph construct_4 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"attr_1\" [label = \"attr_1\", shape = box]\n\"attr_2\" [label = \"attr_2\", shape = box]\n\"attr_3\" [label = \"attr_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"attr_1\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.416 >, penwidth = 1.748, style = solid, color = dimgrey]\n\"attr_2\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.2 >, penwidth = 1.1, style = solid, color = dimgrey]\n\"attr_3\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.657 >, penwidth = 2.471, style = solid, color = dimgrey]\n\n}\nsubgraph construct_5 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"comp_1\" [label = \"comp_1\", shape = box]\n\"comp_2\" [label = \"comp_2\", shape = box]\n\"comp_3\" [label = \"comp_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"comp_1\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.817 >, penwidth = 2.951, style = solid, color = dimgrey]\n\"comp_2\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.825 >, penwidth = 2.975, style = solid, color = dimgrey]\n\"comp_3\" -> {\"COMP\"}[weight = 1000, label = < 𝜆 = 0.848 >, penwidth = 3.044, style = solid, color = dimgrey]\n\n}\nsubgraph construct_6 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"like_1\" [label = \"like_1\", shape = box]\n\"like_2\" [label = \"like_2\", shape = box]\n\"like_3\" [label = \"like_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"like_1\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.881 >, penwidth = 3.143, style = solid, color = dimgrey]\n\"like_2\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.867 >, penwidth = 3.101, style = solid, color = dimgrey]\n\"like_3\" -> {\"LIKE\"}[weight = 1000, label = < 𝜆 = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_7 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusa\" [label = \"cusa\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"cusa\" -> {\"CUSA\"}[weight = 1000, label = < 𝜆 = 1 >, penwidth = 3.5, style = solid, color = dimgrey]\n\n}\nsubgraph construct_8 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusl_1\" [label = \"cusl_1\", shape = box]\n\"cusl_2\" [label = \"cusl_2\", shape = box]\n\"cusl_3\" [label = \"cusl_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"CUSL\" -> {\"cusl_1\"}[weight = 1000, label = < 𝜆 = 0.822 >, penwidth = 2.966, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_2\"}[weight = 1000, label = < 𝜆 = 0.918 >, penwidth = 3.254, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_3\"}[weight = 1000, label = < 𝜆 = 0.852 >, penwidth = 3.056, style = solid, color = dimgrey]\n\n}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d994f6c234a0715458b8" style="width:288px;height:288px;"></div>
+<script type="application/json" data-for="htmlwidget-d994f6c234a0715458b8">{"x":{"diagram":"digraph G {\n\n// ----------------------\n// General graph settings\n// ----------------------\ngraph [\ncharset = \"UTF-8\",\nlayout = dot,\nlabel = \"\",\nfontsize = 24,\nfontcolor = black,\nfontname = helvetica,\nrankdir = LR,\nlabelloc = t,\nsplines = TRUE\nbgcolor = transparent\n]\n\n// --------------------\n// The structural model\n// --------------------\nsubgraph sm {\nrankdir = LR;\nnode [\nshape = ellipse,\ncolor = black,\nfillcolor = white,\nstyle = filled,\nfontsize = 12,\nfontcolor = black,\nheight = 1.03860677083333,\nwidth = 0.9,\nfontname = helvetica,\nfixedsize = true\n]\n\"QUAL\" [label=<<B>QUAL <\/B>>, shape = ellipse]\n\"PERF\" [label=<<B>PERF <\/B>>, shape = ellipse]\n\"CSOR\" [label=<<B>CSOR <\/B>>, shape = ellipse]\n\"ATTR\" [label=<<B>ATTR <\/B>>, shape = ellipse]\n\"COMP\" [label=<<B>COMP <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.629<\/FONT>>, shape = ellipse]\n\"LIKE\" [label=<<B>LIKE <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.558<\/FONT>>, shape = ellipse]\n\"CUSA\" [label=<<B>CUSA <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.292<\/FONT>>, shape = ellipse]\n\"CUSL\" [label=<<B>CUSL <\/B><BR /><FONT POINT-SIZE=\"10\">R² = 0.476<\/FONT>>, shape = ellipse]\nedge [\ncolor = black,\nfontsize = 9,\nfontcolor = black,\nfontname = helvetica,\ndir = both,\narrowhead = normal,\narrowtail = none\n]\n\"QUAL\" -> {\"COMP\"}[weight = 1, label = < β = 0.427<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.635, style = solid, color = black]\n\"PERF\" -> {\"COMP\"}[weight = 1, label = < β = 0.3<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2, style = solid, color = black]\n\"CSOR\" -> {\"COMP\"}[weight = 1, label = < β = 0.055<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.775, style = solid, color = black]\n\"ATTR\" -> {\"COMP\"}[weight = 1, label = < β = 0.086<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 0.93, style = solid, color = black]\n\"QUAL\" -> {\"LIKE\"}[weight = 1, label = < β = 0.38<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.4, style = solid, color = black]\n\"PERF\" -> {\"LIKE\"}[weight = 1, label = < β = 0.117<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.085, style = solid, color = black]\n\"CSOR\" -> {\"LIKE\"}[weight = 1, label = < β = 0.179<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.395, style = solid, color = black]\n\"ATTR\" -> {\"LIKE\"}[weight = 1, label = < β = 0.167<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.335, style = solid, color = black]\n\"COMP\" -> {\"CUSA\"}[weight = 1, label = < β = 0.141<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 1.205, style = solid, color = black]\n\"LIKE\" -> {\"CUSA\"}[weight = 1, label = < β = 0.439<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 2.695, style = solid, color = black]\n\"CUSA\" -> {\"CUSL\"}[weight = 1, label = < β = 0.69<BR /><FONT POINT-SIZE=\"7\">   <\/FONT> >, penwidth = 3.95, style = solid, color = black]\n}\n// ---------------------\n// The measurement model\n// ---------------------\n\nsubgraph construct_1 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"qual_1\" [label = \"qual_1\", shape = box]\n\"qual_2\" [label = \"qual_2\", shape = box]\n\"qual_3\" [label = \"qual_3\", shape = box]\n\"qual_4\" [label = \"qual_4\", shape = box]\n\"qual_5\" [label = \"qual_5\", shape = box]\n\"qual_6\" [label = \"qual_6\", shape = box]\n\"qual_7\" [label = \"qual_7\", shape = box]\n\"qual_8\" [label = \"qual_8\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"qual_1\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.204 >, penwidth = 1.112, style = solid, color = dimgrey]\n\"qual_2\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.04 >, penwidth = 0.62, style = solid, color = dimgrey]\n\"qual_3\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.104 >, penwidth = 0.812, style = solid, color = dimgrey]\n\"qual_4\" -> {\"QUAL\"}[weight = 1000, label = < w = -0.005 >, penwidth = 0.515, style = dashed, color = dimgrey]\n\"qual_5\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.16 >, penwidth = 0.98, style = solid, color = dimgrey]\n\"qual_6\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.398 >, penwidth = 1.694, style = solid, color = dimgrey]\n\"qual_7\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.229 >, penwidth = 1.187, style = solid, color = dimgrey]\n\"qual_8\" -> {\"QUAL\"}[weight = 1000, label = < w = 0.191 >, penwidth = 1.073, style = solid, color = dimgrey]\n\n}\nsubgraph construct_2 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"perf_1\" [label = \"perf_1\", shape = box]\n\"perf_2\" [label = \"perf_2\", shape = box]\n\"perf_3\" [label = \"perf_3\", shape = box]\n\"perf_4\" [label = \"perf_4\", shape = box]\n\"perf_5\" [label = \"perf_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"perf_1\" -> {\"PERF\"}[weight = 1000, label = < w = 0.466 >, penwidth = 1.898, style = solid, color = dimgrey]\n\"perf_2\" -> {\"PERF\"}[weight = 1000, label = < w = 0.178 >, penwidth = 1.034, style = solid, color = dimgrey]\n\"perf_3\" -> {\"PERF\"}[weight = 1000, label = < w = 0.196 >, penwidth = 1.088, style = solid, color = dimgrey]\n\"perf_4\" -> {\"PERF\"}[weight = 1000, label = < w = 0.341 >, penwidth = 1.523, style = solid, color = dimgrey]\n\"perf_5\" -> {\"PERF\"}[weight = 1000, label = < w = 0.199 >, penwidth = 1.097, style = solid, color = dimgrey]\n\n}\nsubgraph construct_3 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"csor_1\" [label = \"csor_1\", shape = box]\n\"csor_2\" [label = \"csor_2\", shape = box]\n\"csor_3\" [label = \"csor_3\", shape = box]\n\"csor_4\" [label = \"csor_4\", shape = box]\n\"csor_5\" [label = \"csor_5\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"csor_1\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.308 >, penwidth = 1.424, style = solid, color = dimgrey]\n\"csor_2\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.038 >, penwidth = 0.614, style = solid, color = dimgrey]\n\"csor_3\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.405 >, penwidth = 1.715, style = solid, color = dimgrey]\n\"csor_4\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.081 >, penwidth = 0.743, style = solid, color = dimgrey]\n\"csor_5\" -> {\"CSOR\"}[weight = 1000, label = < w = 0.415 >, penwidth = 1.745, style = solid, color = dimgrey]\n\n}\nsubgraph construct_4 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"attr_1\" [label = \"attr_1\", shape = box]\n\"attr_2\" [label = \"attr_2\", shape = box]\n\"attr_3\" [label = \"attr_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"attr_1\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.416 >, penwidth = 1.748, style = solid, color = dimgrey]\n\"attr_2\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.2 >, penwidth = 1.1, style = solid, color = dimgrey]\n\"attr_3\" -> {\"ATTR\"}[weight = 1000, label = < w = 0.657 >, penwidth = 2.471, style = solid, color = dimgrey]\n\n}\nsubgraph construct_5 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"comp_1\" [label = \"comp_1\", shape = box]\n\"comp_2\" [label = \"comp_2\", shape = box]\n\"comp_3\" [label = \"comp_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"comp_1\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.817 >, penwidth = 2.951, style = solid, color = dimgrey]\n\"comp_2\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.825 >, penwidth = 2.975, style = solid, color = dimgrey]\n\"comp_3\" -> {\"COMP\"}[weight = 1000, label = < λ = 0.848 >, penwidth = 3.044, style = solid, color = dimgrey]\n\n}\nsubgraph construct_6 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"like_1\" [label = \"like_1\", shape = box]\n\"like_2\" [label = \"like_2\", shape = box]\n\"like_3\" [label = \"like_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"like_1\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.881 >, penwidth = 3.143, style = solid, color = dimgrey]\n\"like_2\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.867 >, penwidth = 3.101, style = solid, color = dimgrey]\n\"like_3\" -> {\"LIKE\"}[weight = 1000, label = < λ = 0.844 >, penwidth = 3.032, style = solid, color = dimgrey]\n\n}\nsubgraph construct_7 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusa\" [label = \"cusa\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = none\narrowtail = normal\n]\n\"cusa\" -> {\"CUSA\"}[weight = 1000, label = < λ = 1 >, penwidth = 3.5, style = solid, color = dimgrey]\n\n}\nsubgraph construct_8 {\nnode [\nshape = box,\ncolor = dimgrey,\nfillcolor = white,\nstyle = filled,\nfontsize = 8,\nfontcolor = black,\nheight = 0.169303385416667,\nwidth = 0.592936197916667,\nfontname = helvetica,\nfixedsize = true\n]\n\"cusl_1\" [label = \"cusl_1\", shape = box]\n\"cusl_2\" [label = \"cusl_2\", shape = box]\n\"cusl_3\" [label = \"cusl_3\", shape = box]\nedge [\ncolor = dimgrey,\nfontsize = 7,\nfontcolor = black,\nfontname = helvetica,\nminlen = 1,\ndir = both\narrowhead = normal\narrowtail = none\n]\n\"CUSL\" -> {\"cusl_1\"}[weight = 1000, label = < λ = 0.822 >, penwidth = 2.966, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_2\"}[weight = 1000, label = < λ = 0.918 >, penwidth = 3.254, style = solid, color = dimgrey]\n\"CUSL\" -> {\"cusl_3\"}[weight = 1000, label = < λ = 0.852 >, penwidth = 3.056, style = solid, color = dimgrey]\n\n}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="example" class="section level2">
 <h2>Example</h2>
@@ -1709,28 +1810,31 @@ and established models which will be compared.</p>
 <h2>First, conduct CVPAT analysis of the established model.</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Assess the base model ----</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>assess_results <span class="ot">&lt;-</span> <span class="fu">assess_cvpat</span>(established_model,</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>                               <span class="at">seed =</span> <span class="dv">123</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                               <span class="at">cores =</span> <span class="dv">1</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">print</span>(assess_results<span class="sc">$</span>CVPAT_compare_LM,</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt;         PLS Loss LM Loss   Diff Boot T value Boot P Value</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; COMP       1.196   1.211 -0.015        0.542        0.588</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; LIKE       1.915   2.063 -0.148        3.761        0.000</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; CUSA       0.994   0.983  0.011       -0.489        0.625</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; CUSL       1.560   1.600 -0.040        2.914        0.004</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; Overall    1.416   1.464 -0.048        3.482        0.001</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma et al. (2023).</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="fu">print</span>(assess_results<span class="sc">$</span>CVPAT_compare_IA,</span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt;         PLS Loss IA Loss   Diff Boot T value Boot P Value</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; COMP       1.196   2.023 -0.827        8.580        0.000</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt; LIKE       1.915   3.103 -1.187        8.293        0.000</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; CUSA       0.994   1.374 -0.379        5.004        0.000</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; CUSL       1.560   2.663 -1.102        7.572        0.000</span></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; Overall    1.416   2.290 -0.874       10.301        0.000</span></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma et al. (2023).</span></span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>                               <span class="at">nboot =</span> <span class="dv">200</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                               <span class="at">noFolds =</span> <span class="dv">5</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>                               <span class="at">reps =</span> <span class="dv">1</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>                               <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>                               <span class="at">cores =</span> <span class="dv">1</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">print</span>(assess_results<span class="sc">$</span>CVPAT_compare_LM,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt;         PLS Loss LM Loss   Diff Boot T value Boot P Value</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; COMP       1.205   1.266 -0.061        2.035        0.043</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; LIKE       1.943   2.147 -0.204        4.911        0.000</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; CUSA       0.995   0.992  0.003       -0.109        0.913</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; CUSL       1.579   1.670 -0.091        4.444        0.000</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; Overall    1.430   1.519 -0.088        6.310        0.000</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma et al. (2023).</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="fu">print</span>(assess_results<span class="sc">$</span>CVPAT_compare_IA,</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt;         PLS Loss IA Loss   Diff Boot T value Boot P Value</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; COMP       1.205   2.023 -0.818        8.785        0.000</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; LIKE       1.943   3.103 -1.160        8.106        0.000</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt; CUSA       0.995   1.374 -0.379        5.012        0.000</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt; CUSL       1.579   2.663 -1.084        7.675        0.000</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt; Overall    1.430   2.290 -0.860       10.438        0.000</span></span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma et al. (2023).</span></span></code></pre></div>
 <p>The established model has significantly lower predictive loss
 compared to both the naive benchmark IA and the LM model. Thus, we can
 say that the established model has predictive relevance.</p>
@@ -1739,50 +1843,477 @@ say that the established model has predictive relevance.</p>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>compare_results <span class="ot">&lt;-</span> <span class="fu">assess_cvpat_compare</span>(<span class="at">established_model =</span> established_model,</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>                                        <span class="at">alternative_model =</span> competing_model,</span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>                                        <span class="at">testtype =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>                                        <span class="at">nboot =</span> <span class="dv">2000</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>                                        <span class="at">nboot =</span> <span class="dv">200</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>                                        <span class="at">technique =</span> predict_DA,</span>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>                                        <span class="at">seed =</span> <span class="dv">123</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>                                        <span class="at">noFolds =</span> <span class="dv">10</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>                                        <span class="at">reps =</span> <span class="dv">10</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>                                        <span class="at">noFolds =</span> <span class="dv">5</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>                                        <span class="at">reps =</span> <span class="dv">1</span>,</span>
 <span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>                                        <span class="at">cores =</span> <span class="dv">1</span>)</span>
 <span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">print</span>(compare_results, </span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>      <span class="at">cores =</span> <span class="dv">1</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt;         Base Model Loss Alt Model Loss   Diff Boot T value Boot P Value</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; COMP              1.198          1.195  0.003       -0.460        0.645</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; LIKE              1.923          1.933 -0.010        0.883        0.378</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; CUSA              0.988          0.992 -0.004        0.809        0.419</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; CUSL              1.562          1.715 -0.152        3.286        0.001</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; Overall           1.418          1.459 -0.041        3.293        0.001</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma, Liengaard, Hair, Sarstedt, &amp; Ringle, (2023).</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;   Both models under comparison have identical endogenous constructs with identical measurement models.</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt;   Purely exogenous constructs can differ in regards to their relationships with both nomological</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt;   partners and measurement indicators.</span></span></code></pre></div>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">print</span>(compare_results,</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;         Base Model Loss Alt Model Loss   Diff Boot T value Boot P Value</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; COMP              1.205          1.192  0.012       -1.677        0.094</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; LIKE              1.943          1.914  0.029       -1.689        0.092</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; CUSA              0.995          0.994  0.001       -0.114        0.909</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; CUSL              1.579          1.709 -0.131        2.562        0.011</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; Overall           1.430          1.453 -0.022        1.559        0.120</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; CVPAT as per Sharma, Liengaard, Hair, Sarstedt, &amp; Ringle, (2023).</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt;   Both models under comparison have identical endogenous constructs with identical measurement models.</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;   Purely exogenous constructs can differ in regards to their relationships with both nomological</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt;   partners and measurement indicators.</span></span></code></pre></div>
 <p>The established model has significantly lower predictive loss
 compared to the competing model. Thus, we can say that the established
 model has superior predictive performance compared to the competing
 model.</p>
 </div>
+<div id="combined-importance-performance-map-analysis-cipma" class="section level2">
+<h2>Combined Importance-Performance Map Analysis (cIPMA)</h2>
+<p>IPMA (Ringle &amp; Sarstedt, 2016) extends PLS-SEM results by jointly
+considering the <strong>importance</strong> (unstandardized total
+effect) and <strong>performance</strong> (rescaled 0–100 mean score) of
+each construct in predicting a target outcome. cIPMA (Sarstedt et al.,
+2024; Hauff et al., 2024) further integrates NCA to distinguish which
+constructs are <strong>necessary conditions</strong> vs. merely
+sufficient predictors.</p>
+<p><code>assess_cipma()</code> computes both IPMA and NCA in one call,
+classifying constructs into four categories: Top priority (high
+importance + necessary), Important driver (high importance, not
+necessary), Bottleneck risk (low importance but necessary), and Low
+priority.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(seminr)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">library</span>(seminrExtras)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># Estimate a model</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>mobi_mm <span class="ot">&lt;-</span> <span class="fu">constructs</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Image&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;IMAG&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Expectation&quot;</span>,  <span class="fu">multi_items</span>(<span class="st">&quot;CUEX&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Value&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;PERV&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)),</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Satisfaction&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;CUSA&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Loyalty&quot;</span>,      <span class="fu">multi_items</span>(<span class="st">&quot;CUSL&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>)</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>mobi_sm <span class="ot">&lt;-</span> <span class="fu">relationships</span>(</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Image&quot;</span>,        <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Expectation&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>, <span class="st">&quot;Loyalty&quot;</span>)),</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Expectation&quot;</span>,  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Value&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>)),</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Value&quot;</span>,        <span class="at">to =</span> <span class="st">&quot;Satisfaction&quot;</span>),</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Satisfaction&quot;</span>, <span class="at">to =</span> <span class="st">&quot;Loyalty&quot;</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>)</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>mobi_pls <span class="ot">&lt;-</span> <span class="fu">estimate_pls</span>(<span class="at">data =</span> mobi,</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>                          <span class="at">measurement_model =</span> mobi_mm,</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>                          <span class="at">structural_model  =</span> mobi_sm)</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co"># Run cIPMA (IPMA + NCA)</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>cipma_result <span class="ot">&lt;-</span> <span class="fu">assess_cipma</span>(mobi_pls,</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>                              <span class="at">target =</span> <span class="st">&quot;Loyalty&quot;</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                              <span class="at">scale_min =</span> <span class="dv">1</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>                              <span class="at">scale_max =</span> <span class="dv">10</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>                              <span class="at">nca_test.rep =</span> <span class="dv">1000</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>                              <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="co"># View results</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="fu">print</span>(cipma_result)</span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="fu">summary</span>(cipma_result)</span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="co"># cIPMA map (importance vs. performance, with NCA overlay)</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="fu">plot</span>(cipma_result, <span class="at">type =</span> <span class="st">&quot;cipma&quot;</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co"># Standard IPMA map (without NCA distinction)</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="fu">plot</span>(cipma_result, <span class="at">type =</span> <span class="st">&quot;ipma&quot;</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="co"># Use standardized total effects for importance axis</span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="fu">plot</span>(cipma_result, <span class="at">importance_metric =</span> <span class="st">&quot;standardized&quot;</span>)</span></code></pre></div>
+<p>All outer weights must be positive for valid performance rescaling.
+Interaction constructs are automatically excluded. The function warns if
+negative weights are detected and recommends reverse-coding indicators
+(Ringle &amp; Sarstedt, 2016).</p>
+</div>
+<div id="necessary-condition-analysis-nca" class="section level2">
+<h2>Necessary Condition Analysis (NCA)</h2>
+<p>NCA (Dul, 2016) tests whether a predictor is a <em>necessary
+condition</em> for an outcome – i.e., whether a certain level of X is
+required (but not sufficient) for a certain level of Y. This complements
+the sufficiency-based logic of PLS-SEM regression.</p>
+<p><code>assess_nca()</code> auto-detects direct predictors from the
+structural model and runs ceiling-based NCA analysis using internal
+CE-FDH and CR-FDH algorithms.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(seminr)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">library</span>(seminrExtras)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># Estimate a simple model</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>mobi_mm <span class="ot">&lt;-</span> <span class="fu">constructs</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Image&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;IMAG&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Value&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;PERV&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)),</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Satisfaction&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;CUSA&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Loyalty&quot;</span>,      <span class="fu">multi_items</span>(<span class="st">&quot;CUSL&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>)</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>mobi_sm <span class="ot">&lt;-</span> <span class="fu">relationships</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="fu">c</span>(<span class="st">&quot;Image&quot;</span>, <span class="st">&quot;Value&quot;</span>), <span class="at">to =</span> <span class="st">&quot;Satisfaction&quot;</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Satisfaction&quot;</span>, <span class="at">to =</span> <span class="st">&quot;Loyalty&quot;</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>)</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a>mobi_pls <span class="ot">&lt;-</span> <span class="fu">estimate_pls</span>(<span class="at">data =</span> mobi,</span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a>                          <span class="at">measurement_model =</span> mobi_mm,</span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>                          <span class="at">structural_model  =</span> mobi_sm)</span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co"># Run NCA -- predictors auto-detected from structural model</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a>nca_result <span class="ot">&lt;-</span> <span class="fu">assess_nca</span>(mobi_pls,</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>                          <span class="at">target =</span> <span class="st">&quot;Satisfaction&quot;</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>                          <span class="at">test.rep =</span> <span class="dv">1000</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co"># Effect sizes and significance</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="fu">print</span>(nca_result)</span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co"># Full summary with bottleneck tables</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="fu">summary</span>(nca_result)</span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="fu">plot</span>(nca_result, <span class="at">type =</span> <span class="st">&quot;effects&quot;</span>)   <span class="co"># Effect size bar chart</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="fu">plot</span>(nca_result, <span class="at">type =</span> <span class="st">&quot;scatter&quot;</span>)   <span class="co"># Ceiling line scatter plots</span></span></code></pre></div>
+<p>A predictor is identified as a necessary condition when it has an
+effect size d &gt;= 0.1 and a significant permutation test (p &lt;
+0.05), following guidelines from Richter et al. (2020).</p>
+</div>
+<div id="nca-esse-effect-size-sensitivity-extension" class="section level2">
+<h2>NCA-ESSE: Effect Size Sensitivity Extension</h2>
+<p>NCA-ESSE (Becker et al., 2026) extends standard NCA by assessing how
+sensitive effect sizes are to extreme response patterns. It
+systematically varies the ECDF ceiling threshold and compares empirical
+effect size changes against a theoretical benchmark derived from a joint
+uniform distribution.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Run NCA-ESSE on the same model</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>esse_result <span class="ot">&lt;-</span> <span class="fu">assess_nca_esse</span>(mobi_pls,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>                                <span class="at">target =</span> <span class="st">&quot;Satisfaction&quot;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                                <span class="at">thresholds =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="at">by =</span> <span class="fl">0.005</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>                                <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># View results</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fu">print</span>(esse_result)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co"># Summary tables (Table A2 style)</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="fu">summary</span>(esse_result)</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co"># Sensitivity plot (Fig. 4 in Becker et al., 2026)</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="fu">plot</span>(esse_result, <span class="at">type =</span> <span class="st">&quot;sensitivity&quot;</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co"># Difference plot (Fig. 6 in Becker et al., 2026)</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="fu">plot</span>(esse_result, <span class="at">type =</span> <span class="st">&quot;difference&quot;</span>)</span></code></pre></div>
+<p>At each threshold <code>t</code>, observations whose joint ECDF_NCA
+value P(X &lt;= x, Y &gt;= y) is at most <code>t</code> are treated as
+extreme upper-left cases and excluded. The uniform benchmark d = t(1 -
+ln(t)) gives the expected effect size increase if no true necessity
+exists. Empirical effect sizes that consistently exceed the benchmark
+provide evidence for a robust necessary condition.</p>
+</div>
+<div id="composite-overfit-analysis-coa" class="section level2">
+<h2>Composite Overfit Analysis (COA)</h2>
+<p>COA detects observation-level overfitting in PLS composite models. It
+computes predictive deviance (the gap between in-sample fitted and
+out-of-sample predicted scores), then uses a decision tree to identify
+subgroups where the model overfits.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">library</span>(seminr)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">library</span>(seminrExtras)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># Estimate a model</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>corp_mm <span class="ot">&lt;-</span> <span class="fu">constructs</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;COMP&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;comp_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;LIKE&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;like_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;CUSA&quot;</span>, <span class="fu">single_item</span>(<span class="st">&quot;cusa&quot;</span>)),</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;CUSL&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;cusl_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>)</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>corp_sm <span class="ot">&lt;-</span> <span class="fu">relationships</span>(</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="fu">c</span>(<span class="st">&quot;COMP&quot;</span>, <span class="st">&quot;LIKE&quot;</span>), <span class="at">to =</span> <span class="st">&quot;CUSA&quot;</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;CUSA&quot;</span>, <span class="at">to =</span> <span class="st">&quot;CUSL&quot;</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>)</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>corp_model <span class="ot">&lt;-</span> <span class="fu">estimate_pls</span>(</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>  <span class="at">data =</span> corp_rep_data,</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>  <span class="at">measurement_model =</span> corp_mm,</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>  <span class="at">structural_model  =</span> corp_sm,</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>  <span class="at">missing =</span> mean_replacement,</span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>  <span class="at">missing_value =</span> <span class="st">&quot;-99&quot;</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a><span class="co"># Run full COA pipeline</span></span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>coa_result <span class="ot">&lt;-</span> <span class="fu">assess_coa</span>(corp_model,</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>                          <span class="at">focal_construct =</span> <span class="st">&quot;CUSL&quot;</span>,</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>                          <span class="at">noFolds =</span> <span class="dv">10</span>, <span class="at">reps =</span> <span class="dv">1</span>, <span class="at">cores =</span> <span class="dv">1</span>,</span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="fu">print</span>(coa_result)</span>
+<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a><span class="fu">summary</span>(coa_result)</span>
+<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a><span class="fu">plot</span>(coa_result, <span class="at">type =</span> <span class="st">&quot;pd&quot;</span>)      <span class="co"># Predictive deviance distribution</span></span>
+<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a><span class="fu">plot</span>(coa_result, <span class="at">type =</span> <span class="st">&quot;tree&quot;</span>)    <span class="co"># Decision tree</span></span>
+<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a><span class="fu">plot</span>(coa_result, <span class="at">type =</span> <span class="st">&quot;groups&quot;</span>)  <span class="co"># Deviant group highlights</span></span></code></pre></div>
+<p>COA proceeds in four steps: (1) compute predictive deviance via
+cross-validated prediction, (2) grow a decision tree to identify deviant
+subgroups, (3) analyze parameter instability by re-estimating the model
+without each deviant group, and (4) inspect group rules and competing
+splits.</p>
+</div>
+<div id="confirmatory-tetrad-analysis-cta-pls" class="section level2">
+<h2>Confirmatory Tetrad Analysis (CTA-PLS)</h2>
+<p>CTA-PLS (Gudergan et al., 2008) empirically tests whether a
+construct’s measurement model is consistent with a reflective (common
+factor) specification. Under a reflective model, all model-implied
+vanishing tetrads equal zero. If any tetrad is significantly non-zero
+(after multiple testing correction), the reflective specification is
+rejected in favour of a formative one.</p>
+<p>CTA-PLS requires at least 4 indicators per construct. When
+<code>borrow = TRUE</code> (the default), constructs with only 2 or 3
+indicators can still be tested by borrowing indicators from structurally
+connected constructs. The borrowing rules follow Gudergan et al. (2008,
+Table 1):</p>
+<ul>
+<li><strong>3 own indicators + 1 borrowed</strong> from an adjacent
+reflective construct: all tetrads vanish under H0.</li>
+<li><strong>2 own indicators + 2 borrowed</strong> from any adjacent
+construct: only the cross-tetrad tau_1342 vanishes.</li>
+<li>Formative focal constructs cannot be tested via borrowing (no
+vanishing tetrads exist under a formative model).</li>
+</ul>
+<p>When <code>borrow = FALSE</code>, constructs with fewer than 4
+indicators are skipped entirely.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">library</span>(seminr)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">library</span>(seminrExtras)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>mobi_mm <span class="ot">&lt;-</span> <span class="fu">constructs</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Image&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;IMAG&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Expectation&quot;</span>,  <span class="fu">multi_items</span>(<span class="st">&quot;CUEX&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Value&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;PERV&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)),</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Satisfaction&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;CUSA&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Loyalty&quot;</span>,      <span class="fu">multi_items</span>(<span class="st">&quot;CUSL&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>mobi_sm <span class="ot">&lt;-</span> <span class="fu">relationships</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Image&quot;</span>,       <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Expectation&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>, <span class="st">&quot;Loyalty&quot;</span>)),</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Expectation&quot;</span>, <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Value&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>)),</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Value&quot;</span>,       <span class="at">to =</span> <span class="st">&quot;Satisfaction&quot;</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Satisfaction&quot;</span>, <span class="at">to =</span> <span class="st">&quot;Loyalty&quot;</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>)</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>mobi_pls <span class="ot">&lt;-</span> <span class="fu">estimate_pls</span>(<span class="at">data =</span> mobi,</span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>                          <span class="at">measurement_model =</span> mobi_mm,</span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>                          <span class="at">structural_model  =</span> mobi_sm)</span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co"># CTA-PLS with borrowing (default)</span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a>cta_result <span class="ot">&lt;-</span> <span class="fu">assess_cta</span>(mobi_pls, <span class="at">nboot =</span> <span class="dv">5000</span>, <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="fu">print</span>(cta_result)</span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="fu">summary</span>(cta_result)</span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co"># Without borrowing — only Image (5 indicators) is testable</span></span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a>cta_no_borrow <span class="ot">&lt;-</span> <span class="fu">assess_cta</span>(mobi_pls, <span class="at">nboot =</span> <span class="dv">5000</span>, <span class="at">borrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="fu">print</span>(cta_no_borrow)</span>
+<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="co"># Visualize adjusted p-values per construct</span></span>
+<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="fu">plot</span>(cta_result)</span></code></pre></div>
+<p>The <code>print()</code> output shows a per-construct summary with
+the measurement mode, number of indicators (including borrowed), number
+of tetrads tested, how many are significant, and the verdict (reflective
+supported or rejected). Constructs that borrowed indicators are
+annotated with the donor construct. The <code>summary()</code> output
+additionally shows the individual tetrad estimates, bootstrap t-values,
+confidence intervals, and adjusted p-values.</p>
+<p>Benjamini-Hochberg (BH) correction for multiple testing is applied by
+default (Cefis et al., 2025). Bonferroni correction and no correction
+are also available via the <code>correction</code> parameter.</p>
+</div>
+<div id="unobserved-heterogeneity-fimix-pls-and-pls-pos" class="section level2">
+<h2>Unobserved Heterogeneity (FIMIX-PLS and PLS-POS)</h2>
+<p>FIMIX-PLS and PLS-POS are complementary approaches for detecting
+unobserved heterogeneity in PLS-SEM. FIMIX-PLS uses probabilistic
+(EM-based) assignment and assumes normally distributed residuals, while
+PLS-POS uses deterministic (hill-climbing) assignment with no
+distributional assumptions. Both methods partition the sample into K
+segments with segment-specific path coefficients.</p>
+<div id="fimix-pls-finite-mixture-pls" class="section level3">
+<h3>FIMIX-PLS (Finite Mixture PLS)</h3>
+<p>FIMIX-PLS (Hahn et al., 2002; Sarstedt et al., 2011)
+probabilistically assigns observations to K segments, each with
+segment-specific structural path coefficients.</p>
+<p><code>assess_fimix()</code> estimates a single K-segment solution,
+while <code>assess_fimix_compare()</code> compares solutions across K
+values using information criteria (AIC, BIC, CAIC, etc.) to help select
+the optimal number of segments.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># FIMIX with K=2 segments (using the corporate reputation model from the setup)</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>fimix_k2 <span class="ot">&lt;-</span> <span class="fu">assess_fimix</span>(established_model, <span class="at">K =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">10</span>, <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">print</span>(fimix_k2)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">summary</span>(fimix_k2)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">plot</span>(fimix_k2)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># Compare across K=2..4 using information criteria</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>fimix_compare <span class="ot">&lt;-</span> <span class="fu">assess_fimix_compare</span>(established_model,</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>                                       <span class="at">K_range =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>                                       <span class="at">nstart =</span> <span class="dv">10</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>                                       <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="fu">print</span>(fimix_compare)</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="fu">plot</span>(fimix_compare)</span></code></pre></div>
+</div>
+<div id="pls-pos-prediction-oriented-segmentation" class="section level3">
+<h3>PLS-POS (Prediction-Oriented Segmentation)</h3>
+<p>PLS-POS (Becker et al., 2013) maximizes the sum of R-squared values
+across all endogenous constructs across K segments using deterministic
+hill-climbing. Unlike FIMIX-PLS, it makes no distributional assumptions
+and can detect heterogeneity in both structural and formative
+measurement models.</p>
+<p><code>assess_pos()</code> estimates a single K-segment solution with
+multiple random starts, while <code>assess_pos_compare()</code> compares
+solutions across K values using the objective criterion.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># PLS-POS with K=2 segments</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>pos_k2 <span class="ot">&lt;-</span> <span class="fu">assess_pos</span>(established_model, <span class="at">K =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">10</span>, <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">print</span>(pos_k2)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="fu">summary</span>(pos_k2)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">plot</span>(pos_k2, <span class="at">type =</span> <span class="st">&quot;rsquared&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">plot</span>(pos_k2, <span class="at">type =</span> <span class="st">&quot;paths&quot;</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># Compare across K=2..4 to find optimal number of segments</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>pos_compare <span class="ot">&lt;-</span> <span class="fu">assess_pos_compare</span>(established_model,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>                                   <span class="at">K_range =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>                                   <span class="at">nstart =</span> <span class="dv">10</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>                                   <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="fu">print</span>(pos_compare)</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="fu">plot</span>(pos_compare)</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co"># Extract segment-specific models for further analysis</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>seg_models <span class="ot">&lt;-</span> <span class="fu">pos_segments</span>(pos_k2)</span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="fu">summary</span>(seg_models[[<span class="dv">1</span>]])</span></code></pre></div>
+<p>PLS-POS assigns each observation to exactly one segment (hard
+assignment) and re-estimates the full PLS model within each segment. The
+algorithm iteratively reassigns observations one at a time, accepting
+only moves that improve the objective criterion. Multiple random
+starting partitions help avoid local optima.</p>
+</div>
+</div>
+<div id="predictive-contribution-of-the-mediator-pcm" class="section level2">
+<h2>Predictive Contribution of the Mediator (PCM)</h2>
+<p>Mediators are a popular mechanism for adding nuance and greater
+explanatory power to causal models. However, mediators pose a special
+challenge to generating predictions as they serve a dual role of
+antecedent and outcome. The Predictive Contribution of the Mediator
+(PCM; Danks, 2021) evaluates whether a mediating construct improves
+out-of-sample predictive accuracy.</p>
+<p>PCM compares predictions from two approaches on an isolated sub-model
+for each mediation path:</p>
+<ul>
+<li><strong>DA (Direct Antecedents)</strong>: Uses direct predictors
+(including the mediator) to predict the outcome.</li>
+<li><strong>EA (Earliest Antecedents)</strong>: Uses only the earliest
+antecedent, propagated through the structural model.</li>
+</ul>
+<p>The PCM metric is computed as:
+<code>PCM = (METRIC_EA - METRIC_DA) / METRIC_EA</code></p>
+<p>Rules of thumb: PCM &lt; 0.05 = Weak, 0.05-0.10 = Moderate, &gt; 0.10
+= Strong.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Specify a mediation model</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>mobi_mm <span class="ot">&lt;-</span> <span class="fu">constructs</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Image&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;IMAG&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Expectation&quot;</span>,  <span class="fu">multi_items</span>(<span class="st">&quot;CUEX&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Value&quot;</span>,        <span class="fu">multi_items</span>(<span class="st">&quot;PERV&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)),</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Satisfaction&quot;</span>, <span class="fu">multi_items</span>(<span class="st">&quot;CUSA&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="fu">composite</span>(<span class="st">&quot;Loyalty&quot;</span>,      <span class="fu">multi_items</span>(<span class="st">&quot;CUSL&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>mobi_sm <span class="ot">&lt;-</span> <span class="fu">relationships</span>(</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Image&quot;</span>,       <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Expectation&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>, <span class="st">&quot;Loyalty&quot;</span>)),</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Expectation&quot;</span>, <span class="at">to =</span> <span class="fu">c</span>(<span class="st">&quot;Value&quot;</span>, <span class="st">&quot;Satisfaction&quot;</span>)),</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Value&quot;</span>,       <span class="at">to =</span> <span class="st">&quot;Satisfaction&quot;</span>),</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>  <span class="fu">paths</span>(<span class="at">from =</span> <span class="st">&quot;Satisfaction&quot;</span>, <span class="at">to =</span> <span class="st">&quot;Loyalty&quot;</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>)</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>pls_model <span class="ot">&lt;-</span> <span class="fu">estimate_pls</span>(mobi, mobi_mm, mobi_sm)</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co"># Compute PCM for all mediation paths to Loyalty</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>pcm_result <span class="ot">&lt;-</span> <span class="fu">assess_pcm</span>(pls_model,</span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a>                         <span class="at">target  =</span> <span class="st">&quot;Loyalty&quot;</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a>                         <span class="at">noFolds =</span> <span class="dv">10</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a>                         <span class="at">reps    =</span> <span class="dv">10</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co"># Print concise overview</span></span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a>pcm_result</span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="co"># Detailed per-indicator results</span></span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="fu">summary</span>(pcm_result)</span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="co"># Visual comparison of mediation paths</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="fu">plot</span>(pcm_result)</span></code></pre></div>
+</div>
+<div id="congruence-testing" class="section level2">
+<h2>Congruence Testing</h2>
+<p>Congruence testing (Franke, Sarstedt, &amp; Danks, 2021) evaluates
+whether PLS composite weights are stable across bootstrap samples by
+computing congruence coefficients. A congruence coefficient close to 1
+indicates that the composite weight pattern is robust.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>cong_result <span class="ot">&lt;-</span> <span class="fu">congruence_test</span>(mobi_pls,</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>                                <span class="at">nboot =</span> <span class="dv">2000</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>                                <span class="at">seed =</span> <span class="dv">123</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="fu">print</span>(cong_result)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="fu">summary</span>(cong_result)</span></code></pre></div>
+</div>
 <div id="references" class="section level1">
 <h1>References</h1>
 <ul>
+<li>Becker, J.-M., Rai, A., Ringle, C. M., &amp; Voelckner, F. (2013).
+Discovering Unobserved Heterogeneity in Structural Equation Models to
+Avert Validity Threats. MIS Quarterly, 37(3), 665-694.</li>
+<li>Danks, N. P. (2021). The Piggy in the Middle: The Role of Mediators
+in PLS-SEM Prediction. The DATA BASE for Advances in Information
+Systems, 52(SI), 24-42.</li>
+<li>Becker, J.-M., Richter, N. F., Ringle, C. M., &amp; Sarstedt, M.
+(2026). Must-have, or maybe not? A sensitivity-based extension to
+necessary condition analysis. Journal of Business Research, 206,
+115920.</li>
+<li>Cefis, M., Angelelli, M., Carpita, M. &amp; Ciavolino, E. (2025).
+Confirmatory Tetrad Analysis in PLS-SEM: A Multiple Testing Correction
+Perspective. Social Indicators Research (advance online).</li>
+<li>Dul, J. (2016). Necessary Condition Analysis (NCA): Logic and
+Methodology of ‘Necessary but Not Sufficient’ Causality. Organizational
+Research Methods, 19(1), 10-52.</li>
+<li>Franke, G. R., Sarstedt, M., &amp; Danks, N. P. (2021). An empirical
+comparison of factor score estimation methods. Journal of Business
+Research, 130, 318-334.</li>
+<li>Gudergan, S. P., Ringle, C. M., Wende, S. &amp; Will, A. (2008).
+Confirmatory Tetrad Analysis in PLS Path Modeling. Journal of Business
+Research, 61(12), 1238-1249.</li>
+<li>Hahn, C., Johnson, M. D., Herrmann, A., &amp; Huber, F. (2002).
+Capturing Customer Heterogeneity using a Finite Mixture PLS Approach.
+Schmalenbach Business Review, 54, 243-269.</li>
 <li>Hair, J.F. (Jr), Hult, T.M., Ringle, C.M., Sarstedt, M., Danks,
 N.P., and Adler, S. (2026). Partial Least Squares Structural Equation
 Modeling (PLS-SEM) Using R (Second Edition) - A Workbook. Springer.</li>
+<li>Hauff, S., Richter, N. F., Sarstedt, M., &amp; Ringle, C. M. (2024).
+Importance and Performance in PLS-SEM and NCA: Introducing the Combined
+Importance-Performance Map Analysis (cIPMA). Journal of Retailing and
+Consumer Services, 78, 103723.</li>
 <li>Liengaard, B. D., Sharma, P. N., Hult, G. T. M., Jensen, M. B.,
 Sarstedt, M., Hair, J. F., &amp; Ringle, C. M. (2021). Prediction:
-coveted,yet forsaken? Introducing a cross‐validated predictive ability
+coveted, yet forsaken? Introducing a cross-validated predictive ability
 test in partial least squares path modeling. Decision Sciences, 52(2),
 362-392.</li>
 <li>Ray, S., Danks, N.P., Calero Valdez, A. (2026) SEMinR:
 Domain-specific language for building, estimating, and visualizing
 structural equation models in R.</li>
+<li>Richter, N. F., Schubring, S., Hauff, S., Ringle, C. M., &amp;
+Sarstedt, M. (2020). When predictors of outcomes are necessary:
+guidelines for the combined use of PLS-SEM and NCA. Industrial
+Management &amp; Data Systems, 120(12), 2243-2267.</li>
+<li>Ringle, C. M. &amp; Sarstedt, M. (2016). Gain More Insight from Your
+PLS-SEM Results: The Importance-Performance Map Analysis. Industrial
+Management &amp; Data Systems, 119(9), 1865-1886.</li>
+<li>Sarstedt, M., Becker, J.-M., Ringle, C. M. &amp; Schwaiger, M.
+(2011). Uncovering and Treating Unobserved Heterogeneity with FIMIX-PLS.
+Schmalenbach Business Review, 63(1), 34-62.</li>
+<li>Sarstedt, M., Richter, N. F., Hauff, S. &amp; Ringle, C. M. (2024).
+Combined Importance-Performance Map Analysis (cIPMA): A SmartPLS 4
+Tutorial. Journal of Marketing Analytics, 12, 746-760.</li>
 <li>Sharma, P. N., Liengaard, B. D., Hair, J. F., Sarstedt, M., &amp;
 Ringle, C. M. (2022). Predictive model assessment and selection in
 composite-based modeling using PLS-SEM: extensions and guidelines for
-using CVPAT. European journal of marketing, 57(6), 1662-1677.</li>
+using CVPAT. European Journal of Marketing, 57(6), 1662-1677.</li>
 </ul>
 </div>
 
