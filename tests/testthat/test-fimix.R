@@ -135,7 +135,7 @@ test_that("segment path coefficients are zero where model has no paths", {
 
 test_that("segment intercepts have correct structure", {
   expect_equal(length(fimix_k2$segment_intercepts), 2)
-  endogenous <- seminr:::all_endogenous(pls_model$smMatrix)
+  endogenous <- all_endogenous(pls_model$smMatrix)
   for (k in 1:2) {
     expect_equal(length(fimix_k2$segment_intercepts[[k]]), length(endogenous))
     expect_true(all(names(fimix_k2$segment_intercepts[[k]]) %in% endogenous))
@@ -147,7 +147,7 @@ test_that("segment intercepts have correct structure", {
 # =============================================================================
 
 test_that("segment_variances has correct dimensions", {
-  endogenous <- seminr:::all_endogenous(pls_model$smMatrix)
+  endogenous <- all_endogenous(pls_model$smMatrix)
   expect_equal(nrow(fimix_k2$segment_variances), length(endogenous))
   expect_equal(ncol(fimix_k2$segment_variances), 2)
 })
@@ -338,7 +338,6 @@ test_that("comparison K_range validation works", {
 # =============================================================================
 
 test_that("FIMIX works with mediation model", {
-  skip_on_cran()
   mm_med <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),
@@ -361,7 +360,6 @@ test_that("FIMIX works with mediation model", {
 })
 
 test_that("FIMIX works with moderation model (two-stage)", {
-  skip_on_cran()
   mm_mod <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Value",        multi_items("PERV", 1:2)),
@@ -385,7 +383,6 @@ test_that("FIMIX works with moderation model (two-stage)", {
 })
 
 test_that("FIMIX works with HOC two-stage model", {
-  skip_on_cran()
   mm_hoc <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),

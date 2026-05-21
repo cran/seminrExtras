@@ -1,7 +1,8 @@
 Package: seminrExtras
 Type: Package
 Title: Conduct Additional Modeling and Analysis for 'seminr'
-Version: 1.0.0
+Version: 1.0.1
+Date: 2026-05-21
 Authors@R: c(person("Soumya", "Ray", email = "soumya.ray@gmail.com", role = c("aut", "ths")),
              person("Nicholas Patrick", "Danks", email = "nicholasdanks@hotmail.com", role = c("aut","cre"))
             )
@@ -24,9 +25,9 @@ BugReports: https://github.com/sem-in-r/seminrExtras/issues
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2026-04-29 14:44:47 UTC; nicholasdanks
+Packaged: 2026-05-21 08:50:45 UTC; nicholasdanks
 Author: Soumya Ray [aut, ths],
   Nicholas Patrick Danks [aut, cre]
 Maintainer: Nicholas Patrick Danks <nicholasdanks@hotmail.com>
 Repository: CRAN
-Date/Publication: 2026-04-29 15:10:02 UTC
+Date/Publication: 2026-05-21 09:40:02 UTC

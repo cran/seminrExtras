@@ -410,7 +410,6 @@ test_that("mediation model: borrow = FALSE skips as before", {
 # =============================================================================
 
 test_that("HOC with >= 4 LOCs is tested using LOC construct scores", {
-  skip_on_cran()
   mm_hoc2 <- constructs(
     composite("IMAG1_2",  multi_items("IMAG", 1:2)),
     composite("IMAG3_4",  multi_items("IMAG", 3:4)),
@@ -438,7 +437,6 @@ test_that("HOC with >= 4 LOCs is tested using LOC construct scores", {
 })
 
 test_that("HOC with < 4 LOCs is skipped (no borrowing across HOC/standard)", {
-  skip_on_cran()
   mm_hoc <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),
@@ -461,7 +459,6 @@ test_that("HOC with < 4 LOCs is skipped (no borrowing across HOC/standard)", {
 })
 
 test_that("LOCs under HOC are tested independently with their own indicators", {
-  skip_on_cran()
   mm_hoc <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),

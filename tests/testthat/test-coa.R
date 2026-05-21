@@ -119,7 +119,6 @@ test_that("MSE values are non-negative", {
 })
 
 test_that("predictive_deviance accepts pre-computed predict_model", {
-  skip_on_cran()
   pd_precomp <- predictive_deviance(
     pls_model,
     focal_construct = "CUSL",
@@ -236,7 +235,6 @@ test_that("unstable_params works with multiple param types", {
 # ============================================================================
 
 test_that("assess_coa returns correct S3 class and structure", {
-  skip_on_cran()
   result <- assess_coa(
     pls_model,
     focal_construct = "CUSL",
@@ -264,7 +262,6 @@ test_that("assess_coa accepts pre-computed predict_model", {
 })
 
 test_that("assess_coa is reproducible with same seed", {
-  skip_on_cran()
   r1 <- assess_coa(pls_model, "CUSL",
                     noFolds = 10, reps = 1, cores = 1, seed = 42)
   r2 <- assess_coa(pls_model, "CUSL",
@@ -274,7 +271,6 @@ test_that("assess_coa is reproducible with same seed", {
 })
 
 test_that("assess_coa works with predict_EA technique", {
-  skip_on_cran()
   result <- assess_coa(
     pls_model,
     focal_construct = "CUSL",

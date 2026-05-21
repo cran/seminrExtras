@@ -312,7 +312,6 @@ test_that("PCM excludes interaction constructs from mediation paths", {
 })
 
 test_that("PCM works end-to-end with moderation model", {
-  skip_on_cran()
   mobi_mm_mod <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Value",        multi_items("PERV", 1:2)),

@@ -317,7 +317,6 @@ test_that("comparison plot runs without error", {
 # =============================================================================
 
 test_that("PLS-POS works with mediation model", {
-  skip_on_cran()
   mm_med <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),
@@ -347,7 +346,6 @@ test_that("PLS-POS works with mediation model", {
 # =============================================================================
 
 test_that("PLS-POS works with moderation model (two-stage)", {
-  skip_on_cran()
   mm_mod <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Value",        multi_items("PERV", 1:2)),
@@ -383,7 +381,6 @@ test_that("PLS-POS works with moderation model (two-stage)", {
 # =============================================================================
 
 test_that("PLS-POS works with HOC two-stage model", {
-  skip_on_cran()
   mm_hoc <- constructs(
     composite("Image",        multi_items("IMAG", 1:5)),
     composite("Expectation",  multi_items("CUEX", 1:3)),
