@@ -147,6 +147,9 @@ plot(competing_model)
 ## ----echo=TRUE----------------------------------------------------------------
 # Assess the base model ----
 assess_results <- assess_cvpat(established_model,
+                               nboot = 200,
+                               noFolds = 10,
+                               reps = 1,
                                seed = 123, 
                                cores = 1)
 print(assess_results$CVPAT_compare_LM,
@@ -159,11 +162,11 @@ print(assess_results$CVPAT_compare_IA,
 compare_results <- assess_cvpat_compare(established_model = established_model,
                                         alternative_model = competing_model,
                                         testtype = "two.sided",
-                                        nboot = 2000,
+                                        nboot = 200,
                                         technique = predict_DA,
                                         seed = 123,
-                                        noFolds = 10,
-                                        reps = 10,
+                                        noFolds = 5,
+                                        reps = 2,
                                         cores = 1)
 
 print(compare_results,
